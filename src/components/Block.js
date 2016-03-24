@@ -7,8 +7,6 @@ export default class Block extends React.Component {
     name: React.PropTypes.string,
     x: React.PropTypes.number,
     y: React.PropTypes.number,
-    dx: React.PropTypes.number,
-    dy: React.PropTypes.number,
     width: React.PropTypes.number,
     height: React.PropTypes.number,
     round: React.PropTypes.number,
@@ -16,8 +14,6 @@ export default class Block extends React.Component {
   }
 
   static defaultProps = {
-    dx: 0,
-    dy: 0,
     width: 100,
     height: 32,
     round: 8
