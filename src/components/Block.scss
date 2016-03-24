@@ -1,4 +1,10 @@
 .block {
-  stroke: #666;
-  fill: lightgreen;
+  rect {
+    stroke: #666;
+    fill: lightgreen;
+  }
+
+  text {
+    font-size: 14px;
+  }
 }

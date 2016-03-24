@@ -20,10 +20,18 @@ export default class Block extends React.Component {
 
   render () {
     return (
-      <rect className={styles.block}
-        x={this.props.x} y={this.props.y}
-        rx={this.props.round} ry={this.props.round}
-        width={this.props.width} height={this.props.height} />
+      <g className={styles.block}>
+        <rect
+          x={this.props.x} y={this.props.y}
+          rx={this.props.round} ry={this.props.round}
+          width={this.props.width} height={this.props.height} />
+
+        <text textAnchor='middle' dominantBaseline='central'
+          x={this.props.x + this.props.width / 2} y={this.props.y + this.props.height / 2}>
+
+          {this.props.name}
+        </text>
+      </g>
     )
   }
 }
