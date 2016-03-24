@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Block from './Block'
+import Wire from './Wire'
 import styles from './Canvas.scss'
 
 export default class Canvas extends React.Component {
@@ -34,8 +35,40 @@ export default class Canvas extends React.Component {
     }
   }
 
+  findBlock (uid) {
+    for (let i = 0; i < this.props.blocks.length; i++) {
+      const block = this.props.blocks[i]
+      if (block.uid === uid) {
+        return block
+      }
+    }
+
+    return null
+  }
+
   render () {
+    let wires = []
     const blocks = this.props.blocks.map((block, index) => {
+      if (block.out && block.out.length > 0) {
+        block.out.forEach((outBlockUid, outIndex) => {
+          const outBlock = this.findBlock(outBlockUid)
+          if (!outBlock) {
+            return
+          }
+
+          const vector = {
+            x1: block.x + Block.defaultProps.width,
+            y1: block.y + Block.defaultProps.height / 2,
+            x2: outBlock.x,
+            y2: outBlock.y + Block.defaultProps.height / 2
+          }
+
+          wires.push(
+            <Wire {...vector} key={`${block.uid}:${outIndex}`} />
+          )
+        })
+      }
+
       return (
         <Block {...block} key={block.uid} selectBlock={this.selectBlock} />
       )
@@ -46,6 +79,7 @@ export default class Canvas extends React.Component {
         {...this.eventHandlers}>
 
         {blocks}
+        {wires}
       </svg>
     )
   }
