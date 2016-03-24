@@ -1,7 +1,7 @@
 /* @flow */
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { increment, doubleAsync } from '../../redux/modules/counter'
+import { increment, move, doubleAsync } from '../../redux/modules/counter'
 
 import Canvas from '../../components/Canvas'
 
@@ -15,7 +15,8 @@ import Canvas from '../../components/Canvas'
 type Props = {
   counter: number,
   doubleAsync: Function,
-  increment: Function
+  increment: Function,
+  move: Function
 };
 
 // We avoid using the `@connect` decorator on the class definition so
@@ -25,7 +26,8 @@ export class HomeView extends React.Component<void, Props, void> {
   static propTypes = {
     counter: PropTypes.object.isRequired,
     doubleAsync: PropTypes.func.isRequired,
-    increment: PropTypes.func.isRequired
+    increment: PropTypes.func.isRequired,
+    move: PropTypes.func.isRequired
   };
 
   render () {
@@ -37,7 +39,7 @@ export class HomeView extends React.Component<void, Props, void> {
           </div>
 
           <div className='col-xs-10 col-sm-10 col-md-10 col-lg-10'>
-            <Canvas {...this.props.counter} />
+            <Canvas {...this.props.counter} moveBlocks={this.props.move} />
           </div>
         </div>
       </div>
@@ -50,5 +52,6 @@ const mapStateToProps = (state) => ({
 })
 export default connect((mapStateToProps), {
   increment: () => increment(1),
+  move,
   doubleAsync
 })(HomeView)
