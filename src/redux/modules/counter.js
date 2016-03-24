@@ -4,6 +4,18 @@
 // ------------------------------------
 export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
 
+import initialState from '../../../blocks.json'
+
+initialState.blocks = initialState.blocks.map((block) => {
+  const uid = 'xxxxxxxx'.replace(/x/g, () => {
+    return Math.floor(Math.random() * 36).toString(36)
+  })
+
+  block.uid = uid
+
+  return block
+})
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -51,7 +63,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = 0
+// const initialState = 0
 export default function counterReducer (state: number = initialState, action: Action): number {
   const handler = ACTION_HANDLERS[action.type]
 
