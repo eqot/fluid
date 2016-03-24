@@ -35,23 +35,17 @@ export default class Canvas extends React.Component {
     }
   }
 
-  findBlock (uid) {
-    for (let i = 0; i < this.props.blocks.length; i++) {
-      const block = this.props.blocks[i]
-      if (block.uid === uid) {
-        return block
-      }
-    }
-
-    return null
-  }
-
   render () {
+    let blockMap = {}
+    this.props.blocks.forEach((block) => {
+      blockMap[block.uid] = block
+    })
+
     let wires = []
     const blocks = this.props.blocks.map((block, index) => {
       if (block.out && block.out.length > 0) {
         block.out.forEach((outBlockUid, outIndex) => {
-          const outBlock = this.findBlock(outBlockUid)
+          const outBlock = blockMap[outBlockUid]
           if (!outBlock) {
             return
           }
