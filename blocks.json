@@ -2,11 +2,13 @@
   "title": "Title",
   "blocks": [
     {
+      "uid": "0",
       "name": "Test",
       "x": 100,
       "y": 100
     },
     {
+      "uid": "1",
       "name": "Test2",
       "x": 300,
       "y": 200

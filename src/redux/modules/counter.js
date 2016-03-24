@@ -6,16 +6,6 @@ export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
 
 import initialState from '../../../blocks.json'
 
-initialState.blocks = initialState.blocks.map((block) => {
-  const uid = 'xxxxxxxx'.replace(/x/g, () => {
-    return Math.floor(Math.random() * 36).toString(36)
-  })
-
-  block.uid = uid
-
-  return block
-})
-
 // ------------------------------------
 // Actions
 // ------------------------------------
