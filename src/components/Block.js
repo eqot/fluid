@@ -31,7 +31,7 @@ export default class Block extends React.Component {
     }
 
     if (this.props.type) {
-      this.block = BlockMap.generate(this.props.type)
+      this.block = BlockMap.generate(this.props.type, this.props.params)
     }
   }
 

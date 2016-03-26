@@ -8,7 +8,7 @@
       "y": 100,
       "out": [
         "1",
-        "2"
+        "3"
       ],
       "type": "Inject",
       "params": [1, 2]
@@ -18,13 +18,25 @@
       "name": "Block 1",
       "x": 300,
       "y": 100,
-      "type": "ConsoleLog"
+      "out": [
+        "2"
+      ],
+      "type": "Func",
+      "params": "function run (value) { return value * 2; }"
     },
     {
       "uid": "2",
       "name": "Block 2",
+      "x": 500,
+      "y": 100,
+      "type": "ConsoleLog"
+    },
+    {
+      "uid": "3",
+      "name": "Block 3",
       "x": 300,
-      "y": 200
+      "y": 200,
+      "type": "ConsoleLog"
     }
   ]
 }
