@@ -2,6 +2,8 @@ import React from 'react'
 
 import styles from './Block.scss'
 
+import BlockMap from '../blocks'
+
 export default class Block extends React.Component {
   static propTypes = {
     name: React.PropTypes.string,
@@ -10,7 +12,11 @@ export default class Block extends React.Component {
     width: React.PropTypes.number,
     height: React.PropTypes.number,
     round: React.PropTypes.number,
-    selectBlock: React.PropTypes.func
+    type: React.PropTypes.string,
+    params: React.PropTypes.any,
+
+    selectBlock: React.PropTypes.func,
+    run: React.PropTypes.func
   }
 
   static defaultProps = {
@@ -22,6 +28,10 @@ export default class Block extends React.Component {
   componentWillMount () {
     this.eventHandlers = {
       onMouseDown: this.onMouseDown.bind(this)
+    }
+
+    if (this.props.type) {
+      this.block = BlockMap.generate(this.props.type)
     }
   }
 
@@ -45,5 +55,15 @@ export default class Block extends React.Component {
 
   onMouseDown (event) {
     this.props.selectBlock(this)
+
+    if (this.block) {
+      this.props.run(this)
+    }
+  }
+
+  run (params) {
+    if (this.block) {
+      return this.block.run(params || this.props.params)
+    }
   }
 }

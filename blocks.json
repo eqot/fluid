@@ -9,13 +9,16 @@
       "out": [
         "1",
         "2"
-      ]
+      ],
+      "type": "Inject",
+      "params": [1, 2]
     },
     {
       "uid": "1",
       "name": "Block 1",
       "x": 300,
-      "y": 100
+      "y": 100,
+      "type": "ConsoleLog"
     },
     {
       "uid": "2",
