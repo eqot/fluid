@@ -47,7 +47,7 @@ export default class Block extends React.Component {
         <text textAnchor='middle' dominantBaseline='central'
           x={this.props.width / 2} y={this.props.height / 2}>
 
-          {this.props.name}
+          {this.props.name || this.props.type}
         </text>
       </g>
     )
