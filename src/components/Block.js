@@ -6,12 +6,14 @@ import BlockMap from '../blocks'
 
 export default class Block extends React.Component {
   static propTypes = {
+    uid: React.PropTypes.string,
     name: React.PropTypes.string,
     x: React.PropTypes.number,
     y: React.PropTypes.number,
     width: React.PropTypes.number,
     height: React.PropTypes.number,
     round: React.PropTypes.number,
+    out: React.PropTypes.array,
     type: React.PropTypes.string,
     params: React.PropTypes.any,
 
@@ -25,7 +27,11 @@ export default class Block extends React.Component {
     round: 8
   }
 
+  static blocks = {}
+
   componentWillMount () {
+    Block.blocks[this.props.uid] = this
+
     this.eventHandlers = {
       onMouseDown: this.onMouseDown.bind(this)
     }
@@ -56,14 +62,25 @@ export default class Block extends React.Component {
   onMouseDown (event) {
     this.props.selectBlock(this)
 
-    if (this.block) {
-      this.props.run(this)
-    }
+    this.run()
   }
 
   run (params) {
-    if (this.block) {
-      return this.block.run(params || this.props.params)
+    if (!this.block) {
+      return
+    }
+
+    const newParams = this.block.run(params)
+
+    if (this.props.out && this.props.out.length > 0) {
+      this.props.out.forEach((outBlockUid) => {
+        const outBlock = Block.blocks[outBlockUid]
+        if (!outBlock) {
+          return
+        }
+
+        outBlock.run(newParams)
+      })
     }
   }
 }

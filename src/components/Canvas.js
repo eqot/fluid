@@ -23,7 +23,6 @@ export default class Canvas extends React.Component {
     super()
 
     this.selectBlock = this.selectBlock.bind(this)
-    this.run = this.run.bind(this)
   }
 
   componentWillMount () {
@@ -116,20 +115,5 @@ export default class Canvas extends React.Component {
     this.setState({
       selectedBlocks: [block]
     })
-  }
-
-  run (block, params) {
-    const result = block.run(params)
-
-    if (block.props.out && block.props.out.length > 0) {
-      block.props.out.forEach((outBlockUid, outIndex) => {
-        const outBlock = this.refs[outBlockUid]
-        if (!outBlock) {
-          return
-        }
-
-        this.run(outBlock, result)
-      })
-    }
   }
 }

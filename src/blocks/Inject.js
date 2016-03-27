@@ -1,5 +1,9 @@
 export default class Inject {
-  run ([a, b]) {
-    return a + b
+  constructor (params) {
+    this.params = params
+  }
+
+  run () {
+    return this.params
   }
 }
