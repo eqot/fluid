@@ -8,7 +8,8 @@
       "y": 100,
       "out": [
         "1",
-        "3"
+        "3",
+        "6"
       ],
       "type": "Inject",
       "params": [1, 2]
@@ -52,6 +53,21 @@
       "uid": "5",
       "x": 500,
       "y": 300,
+      "type": "ConsoleLog"
+    },
+    {
+      "uid": "6",
+      "x": 300,
+      "y": 400,
+      "out": [
+        "7"
+      ],
+      "type": "ConsoleLog"
+    },
+    {
+      "uid": "7",
+      "x": 500,
+      "y": 400,
       "type": "ConsoleLog"
     }
   ]
