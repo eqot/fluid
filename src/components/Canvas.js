@@ -15,8 +15,8 @@ export default class Canvas extends React.Component {
   }
 
   static defaultProps = {
-    width: 800,
-    height: 600
+    width: 1024,
+    height: 800
   }
 
   constructor () {

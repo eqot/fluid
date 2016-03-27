@@ -3,6 +3,7 @@ import Func from './Func'
 import Map from './Map'
 import Delay from './Delay'
 import Http from './Http'
+import Json from './Json'
 import ConsoleLog from './ConsoleLog'
 
 const BLOCK_MAP = {
@@ -11,6 +12,7 @@ const BLOCK_MAP = {
   Map: Map,
   Delay: Delay,
   Http: Http,
+  Json: Json,
   ConsoleLog: ConsoleLog
 }
 
