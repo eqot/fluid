@@ -100,7 +100,9 @@ export default class Block extends React.Component {
             return
           }
 
-          next.then(outBlock.run.bind(outBlock))
+          next.then(outBlock.run.bind(outBlock)).catch((e) => {
+            console.log(e)
+          })
         })
       }
     } else {

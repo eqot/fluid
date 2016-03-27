@@ -2,6 +2,7 @@ import Inject from './Inject'
 import Func from './Func'
 import Map from './Map'
 import Delay from './Delay'
+import Http from './Http'
 import ConsoleLog from './ConsoleLog'
 
 const BLOCK_MAP = {
@@ -9,6 +10,7 @@ const BLOCK_MAP = {
   Func: Func,
   Map: Map,
   Delay: Delay,
+  Http: Http,
   ConsoleLog: ConsoleLog
 }
 

@@ -69,6 +69,32 @@
       "x": 500,
       "y": 400,
       "type": "ConsoleLog"
+    },
+    {
+      "uid": "10",
+      "name": "Inject google",
+      "x": 100,
+      "y": 500,
+      "out": [
+        "11"
+      ],
+      "type": "Inject",
+      "params": "http://httpbin.org/get"
+    },
+    {
+      "uid": "11",
+      "x": 300,
+      "y": 500,
+      "out": [
+        "12"
+      ],
+      "type": "Http"
+    },
+    {
+      "uid": "12",
+      "x": 500,
+      "y": 500,
+      "type": "ConsoleLog"
     }
   ]
 }
