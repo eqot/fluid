@@ -72,7 +72,7 @@
     },
     {
       "uid": "10",
-      "name": "Inject google",
+      "name": "Inject httpbin",
       "x": 100,
       "y": 500,
       "out": [
