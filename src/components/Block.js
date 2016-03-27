@@ -54,10 +54,27 @@ export default class Block extends React.Component {
         <text textAnchor='middle' dominantBaseline='central'
           x={this.props.width / 2} y={this.props.height / 2}>
 
-          {this.props.name || this.props.type}
+          {this.getName()}
         </text>
       </g>
     )
+  }
+
+  getName () {
+    if (this.props.name) {
+      return this.props.name
+    }
+
+    let name = this.props.type
+    if (this.props.params) {
+      let params = this.props.params
+      if (Array.isArray(params)) {
+        params = '[' + params.join(', ') + ']'
+      }
+
+      name += ' ' + params
+    }
+    return name
   }
 
   onMouseDown (event) {
