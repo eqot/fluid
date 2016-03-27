@@ -55,6 +55,16 @@ export default class Canvas extends React.Component {
         })
       }
 
+      if (block.inout) {
+        const inoutBlock = blockMap[block.inout]
+        if (!inoutBlock) {
+          return
+        }
+
+        const wire = this.renderWire(block, inoutBlock, 'dash')
+        wires.push(wire)
+      }
+
       return (
         <Block {...block} key={block.uid} ref={block.uid} selectBlock={this.selectBlock} run={this.run} />
       )
@@ -70,7 +80,7 @@ export default class Canvas extends React.Component {
     )
   }
 
-  renderWire (inBlock, outBlock) {
+  renderWire (inBlock, outBlock, type) {
     const vector = {
       x1: inBlock.x + Block.defaultProps.width,
       y1: inBlock.y + Block.defaultProps.height / 2,
@@ -79,7 +89,7 @@ export default class Canvas extends React.Component {
     }
 
     return (
-      <Wire {...vector} key={`wire-${inBlock.uid}-${outBlock.uid}`} />
+      <Wire {...vector} key={`wire-${inBlock.uid}-${outBlock.uid}`} type={type} />
     )
   }
 

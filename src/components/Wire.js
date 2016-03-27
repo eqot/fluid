@@ -20,8 +20,10 @@ export default class Wire extends React.Component {
   }
 
   render () {
+    const classes = styles.wire + ' ' + styles[this.props.type]
+
     return (
-      <line className={styles.wire} {...this.props} />
+      <line className={classes} {...this.props} />
     )
   }
 
