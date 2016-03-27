@@ -36,33 +36,27 @@ export default class Canvas extends React.Component {
   }
 
   render () {
-    let blockMap = {}
+    this.blockMap = {}
     this.props.blocks.forEach((block) => {
-      blockMap[block.uid] = block
+      this.blockMap[block.uid] = block
     })
 
     let wires = []
     const blocks = this.props.blocks.map((block, index) => {
       if (block.out && block.out.length > 0) {
         block.out.forEach((outBlockUid) => {
-          const outBlock = blockMap[outBlockUid]
-          if (!outBlock) {
-            return
+          const wire = this.renderWire(block, outBlockUid)
+          if (wire) {
+            wires.push(wire)
           }
-
-          const wire = this.renderWire(block, outBlock)
-          wires.push(wire)
         })
       }
 
       if (block.inout) {
-        const inoutBlock = blockMap[block.inout]
-        if (!inoutBlock) {
-          return
+        const wire = this.renderWire(block, block.inout, 'dash')
+        if (wire) {
+          wires.push(wire)
         }
-
-        const wire = this.renderWire(block, inoutBlock, 'dash')
-        wires.push(wire)
       }
 
       return (
@@ -80,7 +74,12 @@ export default class Canvas extends React.Component {
     )
   }
 
-  renderWire (inBlock, outBlock, type) {
+  renderWire (inBlock, outBlockUid, type) {
+    const outBlock = this.blockMap[outBlockUid]
+    if (!outBlock) {
+      return
+    }
+
     const vector = {
       x1: inBlock.x + Block.defaultProps.width,
       y1: inBlock.y + Block.defaultProps.height / 2,
