@@ -74,19 +74,31 @@ export default class Block extends React.Component {
     const inoutBlockUid = this.props.inout
     const inoutBlock = Block.blocks[inoutBlockUid]
 
-    const newParams = this.block.run(params, inoutBlock)
+    const next = this.block.run(params, inoutBlock)
+    if (next instanceof Promise) {
+      if (this.props.out && this.props.out.length > 0) {
+        this.props.out.forEach((outBlockUid) => {
+          const outBlock = Block.blocks[outBlockUid]
+          if (!outBlock) {
+            return
+          }
 
-    if (this.props.out && this.props.out.length > 0) {
-      this.props.out.forEach((outBlockUid) => {
-        const outBlock = Block.blocks[outBlockUid]
-        if (!outBlock) {
-          return
-        }
+          next.then(outBlock.run.bind(outBlock))
+        })
+      }
+    } else {
+      if (this.props.out && this.props.out.length > 0) {
+        this.props.out.forEach((outBlockUid) => {
+          const outBlock = Block.blocks[outBlockUid]
+          if (!outBlock) {
+            return
+          }
 
-        outBlock.run(newParams)
-      })
+          outBlock.run(next)
+        })
+      }
     }
 
-    return newParams
+    return next
   }
 }

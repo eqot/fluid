@@ -57,12 +57,14 @@
     },
     {
       "uid": "6",
+      "name": "Delay 1s",
       "x": 300,
       "y": 400,
       "out": [
         "7"
       ],
-      "type": "ConsoleLog"
+      "type": "Delay",
+      "params": 1000
     },
     {
       "uid": "7",
