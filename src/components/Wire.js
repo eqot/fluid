@@ -7,7 +7,8 @@ export default class Wire extends React.Component {
     x1: React.PropTypes.number,
     y1: React.PropTypes.number,
     x2: React.PropTypes.number,
-    y2: React.PropTypes.number
+    y2: React.PropTypes.number,
+    type: React.PropTypes.string
   }
 
   static defaultProps = {
