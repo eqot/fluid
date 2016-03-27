@@ -14,6 +14,7 @@ export default class Block extends React.Component {
     height: React.PropTypes.number,
     round: React.PropTypes.number,
     out: React.PropTypes.array,
+    inout: React.PropTypes.string,
     type: React.PropTypes.string,
     params: React.PropTypes.any,
 
@@ -70,7 +71,10 @@ export default class Block extends React.Component {
       return
     }
 
-    const newParams = this.block.run(params)
+    const inoutBlockUid = this.props.inout
+    const inoutBlock = Block.blocks[inoutBlockUid]
+
+    const newParams = this.block.run(params, inoutBlock)
 
     if (this.props.out && this.props.out.length > 0) {
       this.props.out.forEach((outBlockUid) => {
@@ -82,5 +86,7 @@ export default class Block extends React.Component {
         outBlock.run(newParams)
       })
     }
+
+    return newParams
   }
 }

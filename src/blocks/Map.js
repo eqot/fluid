@@ -1,10 +1,7 @@
 export default class Map {
-  run (params, inout) {
-    // console.log(this.props.inout)
-    console.log(inout)
-
+  run (params, inoutBlock) {
     const result = params.map((item) => {
-      return item
+      return inoutBlock.run(item)
     })
 
     return result

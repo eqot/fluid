@@ -3,7 +3,7 @@
   "blocks": [
     {
       "uid": "0",
-      "name": "Block 0",
+      "name": "[1, 2]",
       "x": 100,
       "y": 100,
       "out": [
@@ -15,7 +15,7 @@
     },
     {
       "uid": "1",
-      "name": "Block 1",
+      "name": "Func 'x2'",
       "x": 300,
       "y": 100,
       "out": [
@@ -26,16 +26,32 @@
     },
     {
       "uid": "2",
-      "name": "Block 2",
       "x": 500,
       "y": 100,
       "type": "ConsoleLog"
     },
     {
       "uid": "3",
-      "name": "Block 3",
       "x": 300,
       "y": 200,
+      "inout": "4",
+      "out": [
+        "5"
+      ],
+      "type": "Map"
+    },
+    {
+      "uid": "4",
+      "name": "Func 'x2'",
+      "x": 500,
+      "y": 200,
+      "type": "Func",
+      "params": "function run (value) { return value * 2; }"
+    },
+    {
+      "uid": "5",
+      "x": 500,
+      "y": 300,
       "type": "ConsoleLog"
     }
   ]
