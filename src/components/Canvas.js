@@ -44,22 +44,14 @@ export default class Canvas extends React.Component {
     let wires = []
     const blocks = this.props.blocks.map((block, index) => {
       if (block.out && block.out.length > 0) {
-        block.out.forEach((outBlockUid, outIndex) => {
+        block.out.forEach((outBlockUid) => {
           const outBlock = blockMap[outBlockUid]
           if (!outBlock) {
             return
           }
 
-          const vector = {
-            x1: block.x + Block.defaultProps.width,
-            y1: block.y + Block.defaultProps.height / 2,
-            x2: outBlock.x,
-            y2: outBlock.y + Block.defaultProps.height / 2
-          }
-
-          wires.push(
-            <Wire {...vector} key={`${block.uid}:${outIndex}`} />
-          )
+          const wire = this.renderWire(block, outBlock)
+          wires.push(wire)
         })
       }
 
@@ -75,6 +67,19 @@ export default class Canvas extends React.Component {
         {blocks}
         {wires}
       </svg>
+    )
+  }
+
+  renderWire (inBlock, outBlock) {
+    const vector = {
+      x1: inBlock.x + Block.defaultProps.width,
+      y1: inBlock.y + Block.defaultProps.height / 2,
+      x2: outBlock.x,
+      y2: outBlock.y + Block.defaultProps.height / 2
+    }
+
+    return (
+      <Wire {...vector} key={`wire-${inBlock.uid}-${outBlock.uid}`} />
     )
   }
 
