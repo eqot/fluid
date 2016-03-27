@@ -15,14 +15,14 @@
     },
     {
       "uid": "1",
-      "name": "Func 'x2'",
+      "name": "Func 'Accu'",
       "x": 300,
       "y": 100,
       "out": [
         "2"
       ],
       "type": "Func",
-      "params": "function run (value) { return value * 2; }"
+      "params": "function run (value) { let a = 0; value.map((v) => a += v); return a; }"
     },
     {
       "uid": "2",
