@@ -3,7 +3,7 @@ import Func from './Func'
 import Map from './Map'
 import Delay from './Delay'
 import Http from 'fluid-block-http'
-import Json from './Json'
+import Json from 'fluid-block-json'
 import ConsoleLog from './ConsoleLog'
 
 const BLOCK_MAP = {

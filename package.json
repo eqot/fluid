@@ -115,6 +115,7 @@
     "file-loader": "^0.8.4",
     "flow-bin": "0.22.1",
     "flow-interfaces": "^0.5.0",
+    "fluid-block-json": "https://github.com/eqot/fluid-block-json.git",
     "fluid-block-http": "https://github.com/eqot/fluid-block-http.git",
     "fs-extra": "^0.26.3",
     "html-webpack-plugin": "^2.7.1",
