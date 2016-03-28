@@ -2,7 +2,7 @@ import Inject from './Inject'
 import Func from './Func'
 import Map from './Map'
 import Delay from './Delay'
-import Http from './Http'
+import Http from 'fluid-block-http'
 import Json from './Json'
 import ConsoleLog from './ConsoleLog'
 
