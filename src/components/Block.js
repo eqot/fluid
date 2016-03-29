@@ -43,11 +43,18 @@ export default class Block extends React.Component {
   }
 
   render () {
+    let rectStyle = null
+    if (this.block && this.block.color) {
+      rectStyle = {
+        fill: this.block.color
+      }
+    }
+
     return (
       <g className={styles.block} {...this.eventHandlers}
         transform={`translate(${this.props.x},${this.props.y})`}>
 
-        <rect
+        <rect style={rectStyle}
           rx={this.props.round} ry={this.props.round}
           width={this.props.width} height={this.props.height} />
 

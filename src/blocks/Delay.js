@@ -1,4 +1,8 @@
 export default class Delay {
+  static defaultParams = {
+    color: '#de9165'
+  }
+
   constructor (params) {
     this.duration = params
   }

@@ -18,7 +18,14 @@ const BLOCK_MAP = {
 
 function generate (type, params) {
   if (BLOCK_MAP[type]) {
-    return new BLOCK_MAP[type](params)
+    let block = new BLOCK_MAP[type](params)
+
+    const defaultParams = BLOCK_MAP[type].defaultParams
+    if (defaultParams) {
+      block = Object.assign(block, defaultParams)
+    }
+
+    return block
   }
 }
 
