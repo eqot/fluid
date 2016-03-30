@@ -2,6 +2,7 @@ export default class Delay {
   static defaultParams = {
     color1: '#d1895e',
     color2: '#d26c30',
+    inDot: true,
     outDot: true
   }
 

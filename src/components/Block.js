@@ -83,6 +83,15 @@ export default class Block extends React.Component {
       )
     }
 
+    let inDot = null
+    if (this.block.inDot) {
+      inDot = (
+        <circle className={styles.outdot} {...this.eventHandlersForRun}
+          cx={-this.props.outDotSize + 2} cy={this.props.height / 2}
+          r={this.props.outDotSize} />
+      )
+    }
+
     let outDot = null
     if (this.block.outDot) {
       outDot = (
@@ -99,6 +108,7 @@ export default class Block extends React.Component {
         {gradient}
 
         {inButton}
+        {inDot}
         {outDot}
 
         <rect style={rectStyle}
