@@ -8,4 +8,13 @@
     font-size: 14px;
     user-select: none;
   }
+
+  cursor: move;
+}
+
+rect.inbutton {
+  stroke: #000;
+  fill: #eee;
+
+  cursor: pointer;
 }

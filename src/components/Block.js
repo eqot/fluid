@@ -17,6 +17,7 @@ export default class Block extends React.Component {
     inout: React.PropTypes.string,
     type: React.PropTypes.string,
     params: React.PropTypes.any,
+    inButtonSize: React.PropTypes.number,
 
     selectBlock: React.PropTypes.func,
     run: React.PropTypes.func
@@ -25,7 +26,8 @@ export default class Block extends React.Component {
   static defaultProps = {
     width: 100,
     height: 32,
-    round: 8
+    round: 8,
+    inButtonSize: 16
   }
 
   static blocks = {}
@@ -35,6 +37,10 @@ export default class Block extends React.Component {
 
     this.eventHandlers = {
       onMouseDown: this.onMouseDown.bind(this)
+    }
+
+    this.eventHandlersForRun = {
+      onMouseDown: this.run.bind(this)
     }
 
     if (this.props.type) {
@@ -66,11 +72,22 @@ export default class Block extends React.Component {
       }
     }
 
+    let inButton = null
+    if (this.block.inButton) {
+      inButton = (
+        <rect className={styles.inbutton} {...this.eventHandlersForRun}
+          x={-this.props.inButtonSize + 1} y={(this.props.height - this.props.inButtonSize) / 2}
+          width={this.props.inButtonSize} height={this.props.inButtonSize} />
+      )
+    }
+
     return (
       <g className={styles.block} {...this.eventHandlers}
         transform={`translate(${this.props.x},${this.props.y})`}>
 
         {gradient}
+
+        {inButton}
 
         <rect style={rectStyle}
           rx={this.props.round} ry={this.props.round}
@@ -104,8 +121,6 @@ export default class Block extends React.Component {
 
   onMouseDown (event) {
     this.props.selectBlock(this)
-
-    this.run()
   }
 
   run (params) {
