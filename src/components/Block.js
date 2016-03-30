@@ -18,7 +18,7 @@ export default class Block extends React.Component {
     type: React.PropTypes.string,
     params: React.PropTypes.any,
     inButtonSize: React.PropTypes.number,
-    outDotSize: React.PropTypes.number,
+    dotSize: React.PropTypes.number,
 
     selectBlock: React.PropTypes.func,
     run: React.PropTypes.func
@@ -29,7 +29,7 @@ export default class Block extends React.Component {
     height: 32,
     round: 8,
     inButtonSize: 16,
-    outDotSize: 6
+    dotSize: 6
   }
 
   static blocks = {}
@@ -74,30 +74,29 @@ export default class Block extends React.Component {
       }
     }
 
-    let inButton = null
+    let buttons = []
+
     if (this.block.inButton) {
-      inButton = (
-        <rect className={styles.inbutton} {...this.eventHandlersForRun}
+      buttons.push(
+        <rect className={styles.inbutton} {...this.eventHandlersForRun} key={`inButton${this.props.uid}`}
           x={-this.props.inButtonSize + 1} y={(this.props.height - this.props.inButtonSize) / 2}
           width={this.props.inButtonSize} height={this.props.inButtonSize} />
       )
     }
 
-    let inDot = null
     if (this.block.inDot) {
-      inDot = (
-        <circle className={styles.outdot} {...this.eventHandlersForRun}
-          cx={-this.props.outDotSize + 2} cy={this.props.height / 2}
-          r={this.props.outDotSize} />
+      buttons.push(
+        <circle className={styles.outdot} {...this.eventHandlersForRun} key={`inDot${this.props.uid}`}
+          cx={-this.props.dotSize + 2} cy={this.props.height / 2}
+          r={this.props.dotSize} />
       )
     }
 
-    let outDot = null
     if (this.block.outDot) {
-      outDot = (
-        <circle className={styles.outdot} {...this.eventHandlersForRun}
+      buttons.push(
+        <circle className={styles.outdot} {...this.eventHandlersForRun} key={`outDot${this.props.uid}`}
           cx={this.props.width + 4} cy={this.props.height / 2}
-          r={this.props.outDotSize} />
+          r={this.props.dotSize} />
       )
     }
 
@@ -107,9 +106,7 @@ export default class Block extends React.Component {
 
         {gradient}
 
-        {inButton}
-        {inDot}
-        {outDot}
+        {buttons}
 
         <rect style={rectStyle}
           rx={this.props.round} ry={this.props.round}
