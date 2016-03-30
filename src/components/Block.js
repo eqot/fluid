@@ -18,6 +18,7 @@ export default class Block extends React.Component {
     type: React.PropTypes.string,
     params: React.PropTypes.any,
     inButtonSize: React.PropTypes.number,
+    outDotSize: React.PropTypes.number,
 
     selectBlock: React.PropTypes.func,
     run: React.PropTypes.func
@@ -27,7 +28,8 @@ export default class Block extends React.Component {
     width: 100,
     height: 32,
     round: 8,
-    inButtonSize: 16
+    inButtonSize: 16,
+    outDotSize: 6
   }
 
   static blocks = {}
@@ -81,6 +83,15 @@ export default class Block extends React.Component {
       )
     }
 
+    let outDot = null
+    if (this.block.outDot) {
+      outDot = (
+        <circle className={styles.outdot} {...this.eventHandlersForRun}
+          cx={this.props.width + 4} cy={this.props.height / 2}
+          r={this.props.outDotSize} />
+      )
+    }
+
     return (
       <g className={styles.block} {...this.eventHandlers}
         transform={`translate(${this.props.x},${this.props.y})`}>
@@ -88,6 +99,7 @@ export default class Block extends React.Component {
         {gradient}
 
         {inButton}
+        {outDot}
 
         <rect style={rectStyle}
           rx={this.props.round} ry={this.props.round}

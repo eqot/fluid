@@ -3,7 +3,8 @@
 export default class Func {
   static defaultParams = {
     color1: '#fcfca8',
-    color2: '#f7f75e'
+    color2: '#f7f75e',
+    outDot: true
   }
 
   constructor (params) {

@@ -70,8 +70,8 @@ export default class Canvas extends React.Component {
         {...this.eventHandlers}>
 
         <Grid width={this.props.width} height={this.props.height} />
-        {blocks}
         {wires}
+        {blocks}
       </svg>
     )
   }
