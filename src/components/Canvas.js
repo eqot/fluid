@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Grid from './Grid'
 import Block from './Block'
 import Wire from './Wire'
 import styles from './Canvas.scss'
@@ -68,6 +69,7 @@ export default class Canvas extends React.Component {
       <svg className={styles.canvas} width={this.props.width} height={this.props.height}
         {...this.eventHandlers}>
 
+        <Grid width={this.props.width} height={this.props.height} />
         {blocks}
         {wires}
       </svg>
