@@ -1,6 +1,7 @@
 export default class Map {
   static defaultParams = {
-    color: '#fc8'
+    color1: '#f7d09c',
+    color2: '#fabf70'
   }
 
   run (params, inoutBlock) {

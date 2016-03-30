@@ -1,6 +1,7 @@
 export default class Delay {
   static defaultParams = {
-    color: '#de9165'
+    color1: '#d1895e',
+    color2: '#d26c30'
   }
 
   constructor (params) {

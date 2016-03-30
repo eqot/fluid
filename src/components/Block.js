@@ -50,9 +50,27 @@ export default class Block extends React.Component {
       }
     }
 
+    let gradient = null
+    if (this.block && this.block.color1 && this.block.color2) {
+      gradient = (
+        <defs>
+          <linearGradient id={`g${this.props.uid}`} gradientTransform='rotate(30)'>
+            <stop offset='0.1' stopColor={this.block.color1} />
+            <stop offset='0.9' stopColor={this.block.color2} />
+          </linearGradient>
+        </defs>
+      )
+
+      rectStyle = {
+        fill: `url(#g${this.props.uid})`
+      }
+    }
+
     return (
       <g className={styles.block} {...this.eventHandlers}
         transform={`translate(${this.props.x},${this.props.y})`}>
+
+        {gradient}
 
         <rect style={rectStyle}
           rx={this.props.round} ry={this.props.round}

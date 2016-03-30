@@ -1,6 +1,7 @@
 export default class Inject {
   static defaultParams = {
-    color: '#8fcce9'
+    color1: '#6c99c9',
+    color2: '#4785c8'
   }
 
   constructor (params) {
