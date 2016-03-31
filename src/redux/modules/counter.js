@@ -5,7 +5,8 @@
 export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
 export const BLOCK_MOVE = 'BLOCK_MOVE'
 
-import initialState from '../../../blocks.json'
+// import initialState from '../../../blocks.json'
+import initialState from '../../../blocks_weather.json'
 
 // ------------------------------------
 // Actions

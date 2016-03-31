@@ -7,10 +7,11 @@ export default class Map {
   }
 
   run (params, inoutBlock) {
-    const result = params.map((item) => {
-      return inoutBlock.run(item)
+    return new Promise((resolve, reject) => {
+      Promise.all(params.map((item) => {
+        return inoutBlock.run(item)
+      }))
+      .then(resolve)
     })
-
-    return result
   }
 }

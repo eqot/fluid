@@ -5,6 +5,7 @@ import Inject from './Inject'
 import Func from './Func'
 import Map from './Map'
 import Delay from './Delay'
+import ForecastIo from './ForecastIo'
 import Http from 'fluid-block-http'
 import Json from 'fluid-block-json'
 import ConsoleLog from './ConsoleLog'
@@ -14,6 +15,7 @@ const BLOCK_MAP = {
   Func: Func,
   Map: Map,
   Delay: Delay,
+  ForecastIo: ForecastIo,
   Http: Http,
   Json: Json,
   ConsoleLog: ConsoleLog
@@ -27,6 +29,7 @@ const BLOCK_LIST = [
   'Func',
   'Map',
   'Delay',
+  'ForecastIo',
   'Http',
   'Json'
 ]

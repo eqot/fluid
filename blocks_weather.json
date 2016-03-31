@@ -1,0 +1,41 @@
+{
+  "title": "Title",
+  "blocks": [
+    {
+      "uid": "0",
+      "x": 100,
+      "y": 100,
+      "out": [
+        "1"
+      ],
+      "type": "Inject",
+      "name": "Inject lat, lng",
+      "params": [
+        ["New York", 40.7146, -74.0071],
+        ["Chicago", 41.8843, -87.6324],
+        ["San Francisco", 37.7771, -122.4196]
+      ]
+    },
+    {
+      "uid": "1",
+      "x": 300,
+      "y": 100,
+      "inout": "2",
+      "out": [
+        "3"
+      ],
+      "type": "Map"
+    },    {
+      "uid": "2",
+      "x": 500,
+      "y": 100,
+      "type": "ForecastIo"
+    },
+    {
+      "uid": "3",
+      "x": 500,
+      "y": 200,
+      "type": "ConsoleLog"
+    }
+  ]
+}
