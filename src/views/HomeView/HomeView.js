@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { increment, move, doubleAsync } from '../../redux/modules/counter'
 
+import BlockList from '../../blocks'
 import Canvas from '../../components/Canvas'
 
 // We can use Flow (http://flowtype.org/) to type our component's props
@@ -35,7 +36,7 @@ export class HomeView extends React.Component<void, Props, void> {
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
-            Block List
+            <BlockList />
           </div>
 
           <div className='col-xs-10 col-sm-10 col-md-10 col-lg-10'>
