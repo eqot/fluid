@@ -7,6 +7,8 @@ import styles from './Canvas.scss'
 
 export default class Canvas extends React.Component {
   static propTypes = {
+    x: React.PropTypes.number,
+    y: React.PropTypes.number,
     width: React.PropTypes.number,
     height: React.PropTypes.number,
     blocks: React.PropTypes.array,
@@ -65,9 +67,15 @@ export default class Canvas extends React.Component {
       )
     })
 
+    const canvasStyle = {
+      position: 'absolute',
+      left: this.props.x,
+      top: this.props.y
+    }
+
     return (
       <svg className={styles.canvas} width={this.props.width} height={this.props.height}
-        {...this.eventHandlers}>
+        style={canvasStyle} {...this.eventHandlers}>
 
         <Grid width={this.props.width} height={this.props.height} />
         {wires}

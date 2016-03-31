@@ -31,7 +31,21 @@ const BLOCK_LIST = [
   'Json'
 ]
 
+const LIST_MARGIN_TOP = 20
+const LIST_MARGIN_LEFT = 40
+const LIST_MARGIN_RIGHT = LIST_MARGIN_LEFT
+const LIST_MARGIN_BOTTOM = 10
+
 export default class BlockList extends React.Component {
+  static propTypes = {
+    width: React.PropTypes.number,
+    height: React.PropTypes.number
+  }
+
+  static defaultProps = {
+    width: Block.defaultProps.width + LIST_MARGIN_LEFT + LIST_MARGIN_RIGHT
+  }
+
   static generate = (type, params) => {
     if (BLOCK_MAP[type]) {
       let block = new BLOCK_MAP[type](params)
@@ -46,9 +60,9 @@ export default class BlockList extends React.Component {
   }
 
   render () {
-    const x = 20
-    const y = 20
-    const dy = Block.defaultProps.height + 8
+    const x = LIST_MARGIN_LEFT
+    const y = LIST_MARGIN_TOP
+    const dy = Block.defaultProps.height + LIST_MARGIN_BOTTOM
 
     const blocks = BLOCK_LIST.map((type, index) => {
       return (
@@ -57,7 +71,7 @@ export default class BlockList extends React.Component {
     })
 
     return (
-      <svg width={200} height={1024}>
+      <svg width={this.props.width} height={this.props.height}>
         {blocks}
       </svg>
     )
