@@ -19,7 +19,6 @@ export default class ForecastIo {
       const [, lat, lng] = value
 
       const apiKey = ''
-      // const url = 'http://httpbin.org/get'
       const url = 'https://api.forecast.io/forecast/' + apiKey +
         lat + ',' + lng + '?exclude=currently,minutely,hourly,flags&units=si'
 
